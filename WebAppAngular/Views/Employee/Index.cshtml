@@ -1,0 +1,42 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/angularApp.js"></script>
+<style>
+    .btn-space {
+        margin-left: -5%;
+        background-color: cornflowerblue;
+        font-size: large;
+    }
+</style>
+
+<h2>Index</h2>
+<div ng-app="myApp">
+    <div ng-controller="myCtrl" ng-init="GetAllData()" class="divList">
+        <p class="divHead">List of Employee</p>
+        <table cellpadding="12" class="table table-bordered table-hover">
+            <tr>
+                <td>ID</td>
+                <td>Name</td>
+                <td>Address</td>
+                <td>Phone Number</td>
+                <td>Action</td>
+            </tr>
+            <tr ng-repeat="Emp in employees">
+                <td>{{Emp.EmployeeId}}</td>
+                <td>{{Emp.EmployeeName}}</td>
+                <td>{{Emp.EmployeeAddress}}</td>
+                <td>{{Emp.EmployeePhoneNumber}}</td>
+                <td>
+                    <input type="button" class="btn btn-warning" value="update" ng-click="UpdateEmp(Emp)" />
+                    <input type="button" class="btn btn-danger" value="delete" ng-click="DeleteEmp(Emp)" />
+                </td>
+            </tr>
+        </table>
+    </div>
+    @Html.Hidden("EmpID")
+</div>
+
